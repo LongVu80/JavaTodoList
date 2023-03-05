@@ -11,9 +11,11 @@ public class TodoList {
 
 	public void menu() {
 		
-		System.out.println("Please select menu number.");
+		
 		boolean termination = false;
 		while(!termination) {
+			System.out.println();
+			System.out.println("Please select menu number.");
 			printMenu();
 			int selection = getNextIntFromUser();
 			if(selection == MenuOption.EXIT.getId()) {
@@ -116,7 +118,7 @@ public class TodoList {
 
 		}
 
-		System.out.println("Goodbye.");
+//		System.out.println("Goodbye.");
 
 	}
 	
@@ -125,9 +127,7 @@ public class TodoList {
 			 System.out.println("Wrong type of input. Enter interger only.");
 			 scanner.next();
 		}
-    	int input = scanner.nextInt();
-//    	scanner.nextLine();
-		return input;
+		return scanner.nextInt();
     }
     
     private void exit() {
