@@ -47,9 +47,7 @@ public class TodoList {
 	        String input = scanner.nextLine();
 	        if (input.equalsIgnoreCase(stop)) {
 	        	System.out.println("Your list of Todos:");
-			    for (int i = 0; i < todos.size(); i++) {
-			        System.out.println(i + " - " + todos.get(i));
-			    }
+			    printTodos();
 	            return;
 	        }
 	            System.out.println(input + " has been added to the list");
@@ -59,6 +57,12 @@ public class TodoList {
 	       
 	    }
 	    
+	}
+	
+	public void printTodos() {
+		for (int i = 0; i < todos.size(); i++) {
+			System.out.println("Id: " + i + " - " + todos.get(i));
+		}
 	}
 
 	public void removeTodo() {
@@ -75,17 +79,15 @@ public class TodoList {
 
 		if (input.equalsIgnoreCase(yeString)) {
 			System.out.println("Enter the index you like to remove or done to exit.");
-			for (int i = 0; i < todos.size(); i++) {
-				System.out.println(i + " - " + todos.get(i));
-			}
+			printTodos();
 			while (scanner.hasNext()) {
 				input = scanner.next();
 				if (input.equalsIgnoreCase(stop)) {
 					System.out.println("Reminding, this is the remains of the Todos List:");
-					for (int i = 0; i < todos.size(); i++) {
-						System.out.println("Id: " + i + " - " + todos.get(i));
-					}
+					printTodos();
 					break;
+//				} else {
+//			        try {
 				} else if (input.matches("\\d+")) {
 					int selection = Integer.parseInt(input);
 					if (selection >= 0 && selection < todos.size()) {
@@ -95,14 +97,13 @@ public class TodoList {
 							break;
 						}
 						System.out.println("Remaining Todos List:");
-						for (int i = 0; i < todos.size(); i++) {
-							System.out.println("Id: " + i + " - " + todos.get(i));
-						}
+						printTodos();
 						System.out.println("Enter the index you'd like to remove or done to exit:");
 					} else {
 						System.out.println(
 								"Invalid selection. Please enter a number between 0 and " + (todos.size() - 1) + ".");
 					}
+//				} catch (NumberFormatException e) {
 				} else {
 					System.out.println("Invalid input. Please enter a number or 'done' to exit.");
 //				        input = scanner.next();
@@ -112,9 +113,7 @@ public class TodoList {
 
 		if (input.equalsIgnoreCase(noString)) {
 			System.out.println(String.format("You choose No to remove item. You have %d of todos left.", todos.size()));
-			for (int i = 0; i < todos.size(); i++) {
-				System.out.println(i + " - " + todos.get(i));
-			}
+			printTodos();
 
 		}
 
